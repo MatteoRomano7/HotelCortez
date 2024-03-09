@@ -1,0 +1,45 @@
+﻿@model List<Albergo.Models.Prenotazione> 
+
+
+@{
+    ViewBag.Title = "Prenotazioni";
+}
+
+<h2>Index</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Prenotazione ID</th>
+            <th>Data Prenotazione</th>
+            <th>Data Arrivo</th>
+            <th>Data Partenza</th>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Numero Camera</th>
+            <th>Tipo Pensione</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var prenotazione in Model)
+        {
+            <tr>
+                <td>@prenotazione.Prenotazione_ID</td>
+                <td>@prenotazione.Data_Pren.ToString("yyyy-MM-dd")</td>
+                <td>@prenotazione.Data_Arrivo.ToString("yyyy-MM-dd")</td>
+                <td>@prenotazione.Data_Partenza.ToString("yyyy-MM-dd")</td>
+                <td>@prenotazione.Ospite.Nome</td>
+                <td>@prenotazione.Ospite.Cognome</td>
+                <td>@prenotazione.Camera.Numero</td>
+                <td>@prenotazione.Pensione.Tipo</td>
+                <td class=" d-flex">
+                <td class="d-flex">
+                    @Html.ActionLink("Dettaglio", "Details", "Prenotazioni", new { id = prenotazione.Prenotazione_ID }, new { @class = "btn btn-outline-success me-2" })
+                    @Html.ActionLink("Aggiungi servizi", "AddServizi", "Prenotazioni", new { id = prenotazione.Prenotazione_ID }, new { @class = "btn btn-secondary" })
+                </td>
+                </td>
+            </tr>
+            
+        }
+    </tbody>
+</table>
